@@ -1,0 +1,435 @@
+.tab-content{
+    background: #fff;
+    margin-bottom: 50px;
+}
+.btn-action{
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+.btn-xs{
+    padding: 3px 10px;
+    font-size: 10px;
+}
+.btn-add{
+    padding:10px 15px;
+    font-size: 14px;
+    margin:0px 0 10px 0;
+}
+.add-data{
+    padding-top: 15px;
+    float: right;
+}
+.page-title h3{
+    margin: 0;
+    font-size:18px;
+}
+.modal-title{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.panel-title{
+    margin-bottom: 0;
+}
+.body-blue{
+    background: #e7f5ff;
+    border-top: 2px solid #a9dbff;
+}
+#name-user{
+    color: #fff;
+    display: inline-block;
+    padding-top: 20px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+.d{
+    margin-bottom: 10px;
+}
+#d-title{
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#d-total{
+    font-size: 20px;
+    font-weight: bold;
+}
+#sub-number{
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+}
+#gt-title{
+    font-size: 23px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#grand-total{
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#sub-total, #desc{
+    float: right;
+    margin-top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+}
+#sub-title{
+    color: #9eacb4;
+    font-weight: 600;
+}
+.group{
+    margin:10px 0 10px 22px; font-weight: 600; text-transform: uppercase; font-size: 13px;
+}
+.nopadding{
+    padding: 0;
+}
+/*LAPORAN*/
+.report-box{
+    border:1px solid #f5f5f5;
+    padding: 10px;
+    margin: 0px 10px 15px 10px;
+    background: #fff;
+}
+.report-box:hover{
+    background: #f8f9fc;
+    border:1px solid #fff; 
+}
+.report-box > .report-icon{
+    font-size: 40px;
+    float: left;
+    display: inline;
+    margin-right: 15px;
+    margin-left: 5px;
+    color: #9d9d9d;
+
+}
+.report-box > .report-title #title{
+    font-size: 20px;
+    display: block;
+    color: #3498DB;
+}
+.report-box #r-desc{
+    font-size: 14px;
+    color: #7d7d7d;
+}
+/*END LAPORAN*/
+
+/*SALES ORDER*/
+.progress {
+    position: relative;
+    height: 25px;
+}
+.progress > .progress-type {
+    position: absolute;
+    left: 0px;
+    font-weight: 800;
+    padding: 2px 30px 2px 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(25, 25, 25, 0.2);
+}
+.progress > .progress-completed {
+    position: absolute;
+    right: 0px;
+    font-weight: 800;
+    padding: 3px 10px 2px;
+}
+.header-mobile{
+    padding:10px 0;
+    margin-bottom: 10px;
+    margin-top: -15px;
+    background: rgb(0,32,36);
+    background: linear-gradient(90deg, rgba(0,32,36,1) 0%, rgba(122,122,245,1) 0%, rgba(102,219,242,1) 100%);
+}
+.header-mobile #header-title{
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+}
+.header-mobile img{
+    border-radius: 50%;
+    margin: 10px auto;
+}
+.header-mobile #profile-name{
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    margin: 0 0 3px 0;
+    font-weight: 600;
+}
+.header-mobile #profile-status{
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+.header-mobile #profile-status span{
+    background: #3498DB;
+    padding: 2px 10px;
+    border-radius: 20px;
+}
+.grid-mobile{
+    padding: 25px 30px;
+    background: #fff;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.grid-mobile:hover{
+    background: #f9f9f9;
+}
+.grid-mobile img{
+    width: 100%;
+}
+#grid-title{
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+    color: #676a6d;
+}
+.btn-cstm{
+    padding: 10px;
+    font-size: 15px;
+}
+.btn-next{
+    padding: 10px;
+    font-size: 18px;
+}
+#custom-search-input input{
+    border: 1px solid #eaeaea;
+    border-right: none;
+    box-shadow: none;
+    background: #fff;
+    padding: 10px;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 15px 0 10px;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 18px;
+}
+.result-mobile{
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #eee;
+}
+.result-mobile:hover{
+    background: #f7f7f7;
+}
+.result-mobile img{
+    width: 100%;
+}
+.result-mobile #name{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.result-mobile #no{
+    margin-bottom: 0;
+}
+.result-mobile #address{
+    margin-bottom: 0;
+}
+.result-mobile h3{
+    color: #4183D7;
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.result-mobile #date{
+    font-size: 15px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+}
+.result-mobile #done{
+    color: #1BBC9B;
+    font-style: italic;
+}
+.result-mobile .act-m{
+    color: #000;
+    padding: 0 10px 0 0;
+    float: right;
+    font-weight: bold;
+    text-align: right;
+    text-transform: uppercase;
+}
+.result-mobile .act-m a{
+    color: #36D7B7;
+}
+.profit-mobile{
+    color: #fff;
+    padding: 30px 0;
+    margin-top: -15px;
+    background: rgb(0,32,36);
+    background: linear-gradient(90deg, rgba(0,32,36,1) 0%, rgba(122,122,245,1) 0%, rgba(102,219,242,1) 100%);
+    height: 140px;
+}
+.profit-mobile h2{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 70px;
+    font-weight: bold;
+}
+.target-mobile{
+    padding:0 10px;
+}
+.profit-mobile .line{
+    padding: 10px 0;
+    text-align: center;
+    font-size: 18px;
+}
+.target-mobile #result{
+    text-align: center;
+    margin: 0;
+    font-weight: 600;
+    color: #fff;
+    font-size: 20px;
+}
+.target-mobile #target{
+    text-align: center;
+    margin: 0;
+    font-weight: 600;
+    color: #fff;
+    font-size: 20px;
+}
+.target-mobile #dsc{
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 500;
+    color: #f6f6f6;
+    font-size: 14px;
+}
+.transaction-mobile{
+    padding: 10px 15px;
+    margin: -30px 10px 5px 0px;
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+.transaction-mobile #today{
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    color: #676a6d;
+    font-size: 14px;
+}
+.transaction-mobile #trans{
+    margin: 0;
+    padding: 0;
+    color: #a8a8a8;
+    font-size: 12px;
+}
+.transaction-mobile #todaymoney{
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    text-align: right;
+    margin-top: 5px;
+    font-size: 20px;
+}
+.category-mobile{
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+.category-mobile #cat-item{
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+.category-mobile #cat-desc{
+    margin: 0;
+    padding: 0;
+    color: #a8a8a8;
+    font-size: 12px;
+}
+.category-mobile #todaymoney{
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    text-align: right;
+    margin-top: 5px;
+    font-size: 14px;
+}
+.customer-mobile{
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+.price-mobile{
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+}
+.price-mobile #total{
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 10px;
+}
+.price-mobile #money{
+    font-weight: bold;
+    font-size: 18px;
+    text-align: right;
+     padding-top: 10px;
+}
+.item-mobile{
+    border: 1px solid #eee;
+    padding: 0;
+    margin-bottom: 10px;
+    padding:10px 0px 10px 15px;
+}
+.item-mobile #item-delete{
+    height: 100%;
+    padding: 30px 10px;
+    text-align: center;
+    margin-right: -20px;
+}
+.item-mobile #item{
+    margin-bottom: 5px;
+}
+.item-mobile #sub-money{
+    margin-top: 5px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.detailsprice{
+    padding: 10px 15px;
+    border: 1px solid #eee;
+    color: #1BBC9B;
+    margin-bottom: 10px;
+}
+.detailsprice #diskon{
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
+    
+}
+/*SALES ORDER*/

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Laporan Stok</title>
+	<style>
+	html{
+		font-family: arial;
+		font-size: 12px;
+	}	
+	.grid-container {
+	  display: grid;
+	  grid-template-columns: auto auto;
+	}
+	.grid-item {
+	  background-color: rgba(255, 255, 255, 0.8);
+	  padding-bottom:0px;
+	}
+	.grid-item .title h2{
+		margin-top: 2px;
+		font-size: 23px;
+		margin-bottom: 0;
+		text-align: left;
+	}
+	.grid-item .title p{
+		margin: 0;
+	}
+	.grid-item .logo{
+		float: right;
+		margin: 0;
+		text-align: center;
+		margin-top: 0px;
+	}
+	.grid-item .logo p{
+		margin: 0;
+		font-weight: 600;
+	}
+	.grid-item .supplier{
+		float: right;
+		text-align: left;
+	}
+	.grid-item .to{
+		height: 100px;
+		width: 90%;
+		margin-top:10px;
+		border-radius:10px;
+		padding: 5px;
+		border:1px solid #000;
+	}
+	.grid-item .details{
+		width: 100%;
+		padding: 20px 10px 0 10px;
+		height: 100px;
+	}
+	.nopadding{
+		padding: 0;
+	}
+	.container{
+		width: 100%;
+		height: auto;
+		margin-top: 10px;
+	}
+	.container table {
+		margin-top: 10px;
+		width: 100%;
+		font-size: 13px;
+		table-layout: fixed;
+		border-collapse: collapse;
+		border-bottom:1px solid #000;
+	}
+	.container table thead{
+		font-size: 12px;
+		border-top:1px solid #000;
+		border-bottom:1px solid #000;
+	}
+	.container table th{
+		padding: 5px;	
+		text-align: left;
+	}
+	.container table td {
+		border-top: none;
+	    text-align: left;
+	    padding: 5px 10px 5px 10px;
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	    font-size: 12px;
+	}
+	.say{
+		float: left;
+		width: 64%;
+		font-size: 13px;
+	}
+	.say .sign{
+		width: 25%;
+		display: inline-block;
+		border-bottom: 1px solid #000;
+		margin-right: 20px;
+		text-align: center;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+	.say .sign #sign-title {
+		margin-bottom: 60px;
+	}
+	.detailsprice{
+		float: left;
+		width: 36%;
+		font-weight: bold;
+	}
+	</style>
+</head>
+<body>
+<div class="grid-container">
+	<div class="grid-item">
+		<div class="title">
+			<h2>LAPORAN STOK</h2>
+			<p>Periode : 21/08/2018 - 22/08/2018</p>
+		</div>
+	</div>
+	  <div class="grid-item" style="font-size: 14px;">
+	  	<div class="logo">
+	  		<img src="../../../assets/img/logo-akure.png" width="130">
+	  	</div>
+	  </div>
+</div>
+<div class="container">
+	<table>
+		<thead>
+			<th width="20">No.</th>
+			<th width="400">Nama Barang</th>
+			<th width="100" style="text-align: right;">Stok Masuk</th>
+			<th width="100" style="text-align: right;">Stok Keluar</th>
+			<th width="100" style="text-align: right;">Saldo</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>AC Akira AC-S10CUG INP (O)</td>
+				<td style="text-align: right;">11</td>
+				<td style="text-align: right;">2</td>
+				<td style="text-align: right;">9</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Rice Cooker SHARP KS-A18TTR</td>
+				<td style="text-align: right;">11</td>
+				<td style="text-align: right;"</td>
+				<td style="text-align: right;">9</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Yundai Kipas Angin RYEF16</td>
+				<td style="text-align: right;">11</td>
+				<td style="text-align: right;">2</td>
+				<td style="text-align: right;">9</td>
+			</tr>
+			<tr style="border-top: 1px solid #000;">
+				<td colspan="2"><b>Grand Total</b></td>
+				<td style="text-align: right;"><b>11</b></td>
+				<td style="text-align: right;"><b>2</b></td>
+				<td style="text-align: right;"><b>9</b></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

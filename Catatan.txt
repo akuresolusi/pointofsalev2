@@ -1,0 +1,11 @@
+Cek harga faktur:
+var a = Harga Semua Item Faktur * Semua Qty + Persen Pajak - Persen Diskon
+var b = Harga Semua Item return Faktur * Semua Qty return
+Sisa hutang Faktur =  a - b ;
+
+Cek Sisa hutang faktur:
+var a = Harga Semua Item Faktur * Semua Qty + Persen Pajak - Persen Diskon
+var b = Harga Semua Item return Faktur * Semua Qty return
+var c = Harga uang kembali retur
+var d = pelunasan faktur;
+Sisa hutang Faktur =  ((a - b) - d) + c ;

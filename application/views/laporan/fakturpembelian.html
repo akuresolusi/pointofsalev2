@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Faktur Pembelian</title>
+	<style>
+	html{
+		font-family: arial;
+		font-size: 12px;
+	}	
+	.grid-container {
+	  display: grid;
+	  grid-template-columns: auto auto;
+	}
+	.grid-item {
+	  background-color: rgba(255, 255, 255, 0.8);
+	  padding-bottom:0px;
+	}
+	.grid-item .title h2{
+		margin-top: 2px;
+		font-size: 23px;
+		margin-bottom: 0;
+		text-align: left;
+	}
+	.grid-item .logo{
+		float: right;
+		margin: 0;
+		text-align: center;
+		margin-top: 0px;
+	}
+	.grid-item .logo p{
+		margin: 0;
+		font-weight: 600;
+	}
+	.grid-item .supplier{
+		float: right;
+		text-align: left;
+	}
+	.grid-item .to{
+		height: 100px;
+		width: 90%;
+		margin-top:10px;
+		border-radius:10px;
+		padding: 5px;
+		border:1px solid #000;
+	}
+	.grid-item .details{
+		width: 100%;
+		padding: 20px 10px 0 10px;
+		height: 100px;
+	}
+	.nopadding{
+		padding: 0;
+	}
+	.container{
+		width: 100%;
+		height: auto;
+		margin-top: 10px;
+	}
+	.container table {
+		margin-top: 10px;
+		width: 100%;
+		font-size: 13px;
+		table-layout: fixed;
+		border-collapse: collapse;
+		border-bottom:1px solid #000;
+	}
+	.container table thead{
+		font-size: 12px;
+		border-top:1px solid #000;
+		border-bottom:1px solid #000;
+	}
+	.container table th{
+		padding: 5px;	
+		text-align: left;
+	}
+	.container table td {
+		border-top: none;
+	    text-align: left;
+	    padding: 5px 10px 5px 10px;
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	    font-size: 12px;
+	}
+	.say{
+		float: left;
+		width: 64%;
+		font-size: 13px;
+	}
+	.say .sign{
+		width: 25%;
+		display: inline-block;
+		border-bottom: 1px solid #000;
+		margin-right: 20px;
+		text-align: center;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+	.say .sign #sign-title {
+		margin-bottom: 60px;
+	}
+	.detailsprice{
+		float: left;
+		width: 36%;
+		font-weight: bold;
+	}
+	</style>
+</head>
+<body>
+<div class="grid-container">
+	<div class="grid-item">
+		<div class="title">
+			<h2>FAKTUR PEMBELIAN</h2>
+		</div>
+	</div>
+	  <div class="grid-item" style="font-size: 14px;">
+	  	<div class="logo">
+	  		<img src="../../../assets/img/logo-akure.png" width="130">
+	  	</div>
+	  </div>
+</div>
+<div class="grid-container">
+	<div class="grid-item">
+		<span>Kepada Yth :</span>
+		<div class="to">
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<b>Firman</b>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Jalan Sunggal No.14, Medan Sunggal, Sumatera Utara
+						</td>
+					</tr>
+					<tr>
+						<td>08211234567</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="grid-item nopadding">
+		<div class="details">
+			<table>
+				<tbody>
+					<tr>
+						<td><b>Nomor Faktur</b></td>
+						<td width="80"></td>
+						<td>FB-8</td>
+					</tr>
+					<tr>
+						<td><b>Nomor Referensi</b></td>
+						<td></td>
+						<td>123</td>
+					</tr>
+					<tr>
+						<td><b>Tgl. Penerimaan</b></td>
+						<td></td>
+						<td>09 Mei 2018</td>
+					</tr>
+					<tr>
+						<td><b>Tgl. Jatuh Tempo</b></td>
+						<td></td>
+						<td>30 Mei 2018</td>
+					</tr>
+					<tr>
+						<td><b>Cara Bayar</b></td>
+						<td></td>
+						<td>CASH</td>
+					</tr>
+					<tr>
+						<td><b>Keterangan</b></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<table>
+		<thead>
+			<th width="20">No.</th>
+			<th width="400">Nama Barang</th>
+			<th width="60">Satuan</th>
+			<th width="40">Qty</th>
+			<th width="150">Harga</th>
+			<th width="150">Subtotal</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>AC Akira AC-S10CUG INP (O)</td>
+				<td>PAC</td>
+				<td>10</td>
+				<td>Rp 200000</td>
+				<td>Rp 2000000</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Rice Cooker SHARP KS-A18TTR</td>
+				<td>Unit</td>
+				<td>10</td>
+				<td>Rp 200000</td>
+				<td>Rp 2000000</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Yundai Kipas Angin RYEF16</td>
+				<td>Unit</td>
+				<td>10</td>
+				<td>Rp 200000</td>
+				<td>Rp 2000000</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="say">
+		<div class="sign">
+			<p id="sign-title">Penerima</p>
+			<p>(Nama Penerima)</p>
+		</div>
+		<div class="sign">
+			<p id="sign-title">Hormat Kami</p>
+			<p>(KASIR)</p>
+		</div>
+	</div>
+	<div class="detailsprice">
+		<table style="border:none;">
+			<tr>
+				<td>Subtotal</td>
+				<td>Rp 20.000</td>
+			</tr>
+			<tr>
+				<td>Ppn</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Disc</td>
+				<td>0%</td>
+			</tr>
+			<tr>
+				<td>Total</td>
+				<td>Rp 20.000</td>
+			</tr>
+		</table>
+	</div>
+</div>
+</body>
+</html>
