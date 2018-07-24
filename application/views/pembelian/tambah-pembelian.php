@@ -1,14 +1,4 @@
 <!-- MAIN CONTENT -->
-<style>
-.hide{
-	display: none;
-}
-option{
-	color: #000;
-}
-</style>
-
-
 <style type="text/css">
 
   #hasilpencarian{ 
@@ -66,19 +56,24 @@ option{
   
 <script src="<?php echo base_url(); ?>assets/css/select2-min.css"></script>
 <?php echo form_open('pembelian/add_faktur'); ?>
+<div class="container">
+	<ul class="page-breadcrumb breadcrumb">
+	    <li>
+	        <a href="<?php echo base_url(); ?>dashboard">Home</a>
+	    </li>
+	    <li>
+	        <a href="<?php echo base_url(); ?>pembelian">Data Pembelian</a>
+	    </li>
+	    <li>
+	    	<span><?php echo $title; ?></span>
+	    </li>
+	</ul>
+</div>
 <div class="main-content">
 	<div class="container-fluid">
 		<div class="panel panel-default panel-title">
-			<div class="panel-body title-pos">
-				<div class="col-md-6" style="padding: 0;">
-					<span id="sub-title">Pembelian</span>
-					<h3 class="page-title"><?php echo $title; ?></h3>
-				</div>
-			</div>
-		</div>
-		<div class="panel panel-default panel-title">
 			<div class="panel-body title-pos body-blue">
-				<div class="col-md-12">
+				<div class="col-md-12 nopadding">
 					<div class="form-group col-md-3">
 				    	<label>Supplier</label> 
 				    	<input type="hidden" id="idsupplier" name="idsupplier" required="">

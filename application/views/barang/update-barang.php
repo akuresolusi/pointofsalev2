@@ -1,26 +1,60 @@
+<style type="text/css">
+	table{
+		border-top: none;
+	}
+	th{
+		text-align: center;
+	}
+	.table>thead>th{
+		padding-right: 0;
+		padding-left:0;
+	}
+	.table>tbody>tr>td{
+		padding-left: 0;
+		padding-right: 0;
+		border-top: 1px solid #f5f5f5;
+	}
+	.panel .table > thead > tr > th:first-child{
+		padding-left: 0px;
+	}
+	.panel .table > thead > tr > td:first-child,
+	.panel .table > tbody > tr > td:first-child,
+	.panel .table > tbody > tr > th:first-child,
+	.panel .table > tfoot > tr > td:first-child,
+	.panel .table > tfoot > tr > th:first-child {
+	padding-left: 0px; }
+</style>
+<div class="container">
+	<ul class="page-breadcrumb breadcrumb">
+	    <li>
+	        <a href="<?php echo base_url(); ?>dashboard">Home</a>
+	    </li>
+	    <li>
+	        <a href="<?php echo base_url(); ?>barang">Data Barang</a>
+	    </li>
+	    <li>
+	    	<span><?php echo $title; ?></span>
+	    </li>
+	</ul>
+</div>
 <div class="main-content">
 	<div class="container-fluid">
-		<div class="panel panel-default panel-title">
-		    	<div class="panel-body title-pos">
-		    		<div class="col-md-6" style="padding: 0;">
-			    		<span id="sub-title">Produk</span>
-			    		<h3 class="page-title"><?php echo $title; ?></h3>
-		    		</div>
-		    	</div>
-		 </div>
-		<div class="panel panel-default">
-		    	<div class="panel-body">
+		<div class="col-md-6 nopadding" style="padding-right: 7px;">
+			<div class="panel panel-headline">
+  				<div class="panel-heading" style="border-bottom: 1px solid #eee;">
+  					<h4 class="title-fav" style="margin-top: 0; margin-bottom: 15px;">Profil Barang</h4>
+  				</div>
+  				<div class="panel-body">
 					<?php echo form_open_multipart('barang/proses_edit?id='.$detail['id']); ?>
-					  	<div class="form-group">
-					  	<div class="form-group col-md-4">
+					  	<div class="form-group col-md-12">
 					  		<label>Kode Barang</label>
 					  		<input type="text" class="form-control" disabled value="<?php echo $detail['kode']; ?>" >
 					  	</div>
-					    <div class="form-group col-md-4">
+					    <div class="form-group col-md-12">
 					    	<label>Nama Barang</label>
 					      	<input type="text" class="form-control" required="" name="nama" value="<?php echo $detail['nama']; ?>" placeholder="Nama Barang">
 					    </div>
-					    <div class="form-group col-md-4">
+					    <div class="form-group col-md-12">
 					    	<label>Kategori Barang</label> 
 					    	<select class="form-control" name="kategori" required="">
 						    	<?php
@@ -34,23 +68,14 @@
 					    		?>
 						    </select>
 					    </div>
-
-					    <div class="form-group col-md-6">
-					    	<label>Kontrol Stok ?</label>
-					    	<div class="radio">
-						    	<label><input type="radio" name="kontrol" disabled
-						    	<?php if($detail['kontrolstok']=="1"){echo"checked";} ?> required="">Ya</label> &nbsp;&nbsp;&nbsp;
-						    	<label><input type="radio" name="kontrol" disabled 
-						    	<?php if($detail['kontrolstok']=="0"){echo"checked";} ?> required="">Tidak</label>
+					    <div class="form-group col-md-12">
+					    	<div class="row">
+					    		<div class="col-md-6"><label>Multi Satuan </label></div>
+					    		<div class="col-md-6" style="text-align: right;">
+					    			<a href="#" id="add-form-satuan" data-toggle="tooltip" data-placement="left" title="Tambah Satuan" style="margin-right: 5px; font-size: 16px;"><i class="icon-plus"></i></a>
+					    			<a href="#" id="riset-satuan" data-toggle="tooltip" data-placement="left" title="Reset Satuan" style="font-size: 16px;"><i class="icon-refresh"></i></a>	
+					    		</div>
 					    	</div>
-					    </div>
-					    
-
-					    <div class="form-group col-md-6">
-					    	<label>Multi Satuan  
-					    		<div class="btn btn-info btn-xs" style="margin-left: 120px;" id="add-form-satuan" >Tambah Satuan</div>
-					    		<div class="btn btn-warning btn-xs" style="margin-left: 10px;" id="riset-satuan" >Ulangi Satuan</div>	
-					    	</label>
 					    	<table width="100%" class="table">
 					    		<!-- Data satuan yang telah diinput -->
 					    		<?php
@@ -98,9 +123,74 @@
 					    		<tbody id="tambah-satuan">
 					    			<!-- Dianmis Form Satuan -->
 					    		</tbody>
-
 					    	</table>
 					    </div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 nopadding" style="padding-right: 7px;">
+			<div class="panel panel-headline">
+  				<div class="panel-heading" style="border-bottom: 1px solid #eee;">
+  					<h4 class="title-fav" style="margin-top: 0; margin-bottom: 15px;">Harga Barang</h4>
+  				</div>
+  				<div class="panel-body">
+  					<div class="form-group col-md-12">
+				    	<label>Harga Dasar</label>
+				      	<input type="number" class="form-control" required="" value="<?php echo $detail['hargadasar'] ?>" id="hargadasar" name="harga" placeholder="Harga Dasar">
+				    </div>
+				    <div class="form-group col-md-12">
+				    	<label>Harga Jual Barang/Jasa</label>
+				    	<table class="table">
+				    		<thead>
+				    			<tr>
+				    				<th width="150px">Kategori Harga</th>
+				    				<?php
+				    				foreach ($list_kategorip as $value) {
+				    					echo"<th>".$value['kategori']."</th>";
+				    				}
+				    				?>
+				    			</tr>
+				    		</thead>
+				    		<tbody>
+			    				<?php
+			    				foreach ($list_kategorih as $value) {
+			    					echo"
+			    					<tr>
+			    						<td>".$value['kategori']."<input type='hidden' id='".$value['id']."h'></td>";
+			    						foreach ($list_kategorip as $value2) {
+			    							$nilai = $this->barang_model->detail_harga_jual($detail['id'], $value['id'], $value2['id']);
+					    					$name = $value['id']."-".$value2['id'] ;
+					    					echo"<td><input type='number' name='".$name."' id='".$name."' class='form-control' value='".$nilai['harga']."' /></td>";
+					    				}
+			    					echo"
+			    					</tr>";
+			    				}
+			    				?>
+				    		</tbody>
+				    	</table>
+				    </div>
+				    <div class="form-group col-md-12">
+				    	<label>Kontrol Stok ?</label>
+				    	<div class="radio">
+					    	<label><input type="radio" name="kontrol" disabled
+					    	<?php if($detail['kontrolstok']=="1"){echo"checked";} ?> required="">Ya</label> &nbsp;&nbsp;&nbsp;
+					    	<label><input type="radio" name="kontrol" disabled 
+					    	<?php if($detail['kontrolstok']=="0"){echo"checked";} ?> required="">Tidak</label>
+				    	</div>
+				    </div>
+				    <div  class="form-group col-md-12">
+				    	<button type="submit" class="btn btn-info"><span class="fa fa-save"></span> Simpan</button>
+				    	<a href="<?php echo base_url(); ?>barang" class="btn btn-warning"><span class="fa fa-list"></span> Daftar Barang</a>
+				    	<button type="reset" class="btn btn-danger"><span class="fa fa-remove"></span> Batal</button>
+					</div>
+				  	</div>
+					<?php echo form_close(); ?>
+  				</div>
+  			</div>
+
+					    
+					    
 
 					   <!--  <div class="form-group col-md-3">
 					    	<label>Warna</label> 
@@ -131,70 +221,8 @@
 					    		?>
 						    </select>
 					    </div> -->
-
-
-					    <div class="form-group col-md-12">
-					    	<label>Harga Dasar</label>
-					      	<input type="number" class="form-control" required="" value="<?php echo $detail['hargadasar'] ?>" id="hargadasar" name="harga" placeholder="Harga Dasar">
-					    </div>
-
-
-
-					    <div class="form-group col-md-8">
-					    	<label>Harga Jual Barang/Jasa</label>
-					    	<table class="table table-striped table-hover table-bordered">
-					    		<thead>
-					    			<tr>
-					    				<th width="150px">Kategori Harga</th>
-					    				<?php
-					    				foreach ($list_kategorip as $value) {
-					    					echo"<th>".$value['kategori']."</th>";
-					    				}
-					    				?>
-					    			</tr>
-					    		</thead>
-					    		<tbody>
-				    				<?php
-				    				foreach ($list_kategorih as $value) {
-				    					echo"
-				    					<tr>
-				    						<td>".$value['kategori']."<input type='hidden' id='".$value['id']."h'></td>";
-				    						foreach ($list_kategorip as $value2) {
-				    							$nilai = $this->barang_model->detail_harga_jual($detail['id'], $value['id'], $value2['id']);
-						    					$name = $value['id']."-".$value2['id'] ;
-						    					echo"<td><input type='number' name='".$name."' id='".$name."' class='form-control' value='".$nilai['harga']."' /></td>";
-						    				}
-				    					echo"
-				    					</tr>";
-				    				}
-				    				?>
-					    		</tbody>
-					    	</table>
-					    </div>
-
-
-
-					    <div  class="form-group col-md-12">
-					    	<button type="submit" class="btn btn-info" style="margin-bottom: 10px;"><span class="fa fa-save"></span> Simpan</button>
-					    	<a href="<?php echo base_url(); ?>barang" class="btn btn-warning" style="margin-bottom: 10px;""><span class="fa fa-list"></span> Daftar Barang</a>
-					    	<button type="reset" class="btn btn-danger" style="margin-bottom: 10px;"><span class="fa fa-remove"></span> Batal</button>
-						</div>
-					  	</div>
-						<?php echo form_close(); ?>
 			    	</div>
 				</div>
-					<div class="panel panel-default">
-			    		<div class="panel-body">
-							  	<div class=" form-group col-md-12">
-							  		<label>Import Data</label>
-							  			<input type="file" class="form-control">
-							  	</div>
-							  	<div class="form-group col-md-12" style="margin-bottom: 0px;">
-					    			<a href=""><button class="btn btn-info"><span class="fa fa-download"></span> Import</button></a>
-								</div>
-							</div>
-			  			</div>
-					</div>
 
 
 <script type="text/javascript">

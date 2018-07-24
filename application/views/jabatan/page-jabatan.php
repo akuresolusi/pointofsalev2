@@ -72,7 +72,7 @@
 			  	<div class="form-group">
 			  	<div class=" form-group">
 			  		<label>Jabatan</label>
-			  		<input type="text" name="jabatan" class="form-control" placeholder="jabatan">
+			  		<input type="text" name="jabatan" class="form-control" placeholder="Jabatan">
 			  	</div>
 			    <div  class="form-group">
 			    	<button type="submit" class="btn btn-info"><span class="fa fa-save"></span> Simpan</button>

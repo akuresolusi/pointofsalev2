@@ -325,7 +325,7 @@ class Pembelian extends CI_Controller {
 	public function get_satuan_barang(){
 		$idbarang = $this->input->get('idbarang');
 		$data = $this->barang_model->satuan_barang($idbarang);
-		echo"<option value=''>#Pilih#</option>";
+		echo"<option value='' class='hide'>- Pilih -</option>";
 		foreach ($data as $value){
 			echo "<option value='".$value['id']."'>".$value['satuan']."</option>";
 		}

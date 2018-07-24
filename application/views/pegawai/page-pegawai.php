@@ -14,7 +14,7 @@
 			<div class="panel panel-headline">
 				  <div class="panel-body">
 				  	<div class="container-fluid nopadding">
-				  		<a href="<?php echo base_url(); ?>pegawai/tambah"><button class="btn btn-primary btn-action btn-add"><span class="fa fa-plus"></span> Tambah Outlet</button></a>
+				  		<a href="<?php echo base_url(); ?>pegawai/tambah"><button class="btn btn-primary btn-action btn-add"><span class="fa fa-plus"></span> Tambah Data</button></a>
 				 	 </div>	
 							<table id="data" class="table table-striped table-hover table-bordered">
 								<thead>

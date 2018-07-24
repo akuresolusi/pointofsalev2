@@ -25,6 +25,7 @@
 						  	<div class=" form-group col-md-3">
 						  		<label>Metode</label>
 						  		<select class="form-control" name="metode" id="metode" required="">
+						  			<option value="" disabled selected class="hide">- Pilih Metode -</option>
 							    	<?php
 						    			$data = array('CASH','Transfer','CEK','GIRO');
 						    			foreach ($data as $value) {
@@ -50,9 +51,9 @@
 						  		<input type="text" class="form-control" name="atasnama" placeholder="Atas Nama" >
 						  	</div>
 						  	<div class="form-group col-md-3">
-						    	<label>BANK</label> 
+						    	<label>Bank</label> 
 						    	<select class="form-control" name="bank" required="">
-						    		<option value="-"></option>
+						    		<option value="" disabled selected class="hide">- Pilih Bank -</option>
 							    	<?php
 						    			foreach ($list_bank as $value){
 						    				echo "<option value='".$value['id']."'>".$value['bank']."</option>";

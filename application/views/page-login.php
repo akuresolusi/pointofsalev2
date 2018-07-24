@@ -20,9 +20,17 @@
 	<meta name="theme-color" content="#6bb9f0">
 	<link rel="icon" sizes="192x192" href="<?php echo base_url() ?>assets/img/favicon.png">
 	<style type="text/css">
-		body{
-			    
-			}
+		.input-group-addon{
+			background: #fff;
+			border-right:none;
+			border:1px solid #ccc;
+			border-left: 3px solid #6bb9f0;
+			padding-right: 0;
+			border-radius: 2px;
+		}
+		.input-group-addon>i{
+			color: #ccc;
+		}
 	</style>
 </head>
 
@@ -43,13 +51,13 @@
 									
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-user"></i></span>
-										<input class="form-control" placeholder="Nomor Handphone" name="nohp" id="nohp" type="text" autofocus="">
+										<input class="form-control" placeholder="Nomor Handphone" name="nohp" id="nohp" type="text" autofocus="" style="background: #fff; border:1px solid #ccc; border-left: none; ">
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-										<input class="form-control" placeholder="Password" name="password" id="password" type="password">
+										<input class="form-control" placeholder="Password" name="password" id="password" type="password" style="background: #fff; border:1px solid #ccc; border-left: none; ">
 									</div>
 								</div>
 								<button type="submit" class="btn btn-primary btn-lg btn-block">Masuk &rarr;</button>

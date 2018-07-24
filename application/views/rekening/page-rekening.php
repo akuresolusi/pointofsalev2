@@ -82,6 +82,7 @@
 			  	<div class=" form-group">
 			  		<label>Bank</label>
 			  		<select class="form-control" name="bank" required="">
+			  			<option value="" disabled selected class="hide">- Pilih Rekening Bank -</option>
 			  			<?php
 			  				foreach ($list_bank as $value) {
 			  					echo"<option value='".$value['bank']."'>".$value['bank']."</option>";
@@ -90,12 +91,12 @@
 			  		</select>
 			  	</div>
 			  	<div class=" form-group">
-			  		<label>nomor</label>
+			  		<label>Nomor Rekening</label>
 			  		<input type="text" name="nomor" class="form-control" placeholder="Nomor Rekening" required="">
 			  	</div>
 			  	<div class=" form-group">
 			  		<label>Atas Nama</label>
-			  		<input type="text" name="nama" class="form-control" placeholder="Nama" required="">
+			  		<input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" required="">
 			  	</div>
 			    <div  class="form-group">
 			    	<button type="submit" class="btn btn-info"><span class="fa fa-save"></span> Simpan</button>

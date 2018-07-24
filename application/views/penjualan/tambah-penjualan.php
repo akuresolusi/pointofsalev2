@@ -1,13 +1,4 @@
 <!-- MAIN CONTENT -->
-<style>
-.hide{
-	display: none;
-}
-option{
-	color: #000;
-}
-</style>
-
 <style type="text/css">
 
   #hasilpencarianbarang{ 
@@ -94,6 +85,7 @@ option{
 				    <div class="form-group col-md-3">
 				    	<label>Syarat Bayar</label>
 				    	<select class="form-control" name="syaratbayar" required="">
+				    		<option value="" disabled selected class="hide">- Pilih Syarat Bayar -</option>
 				    		<?php
 				    		foreach ($list_syarat_bayar as $value) {
 				    			echo"<option value='".$value['id']."'>".$value['nama']."</option>";

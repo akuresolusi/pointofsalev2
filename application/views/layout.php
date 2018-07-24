@@ -114,7 +114,6 @@
                                     <li><a href="<?php echo base_url() ?>penjualan">Penjualan Barang</a></li>
                                     <li><a href="<?php echo base_url() ?>pelunasanjual">Pelunasan Penjualan</a></li>
                                     <li><a href="<?php echo base_url() ?>returjual">Retur Penjualan</a></li>
-                                    
                                 </ul>
                             </li>
                             
@@ -160,7 +159,6 @@
 									<li><a href="<?php echo base_url() ?>laporan/pembelian" class=""> Laporan Pembelian</a></li>
 									<li><a href="<?php echo base_url() ?>laporan/penjualan" class=""> Laporan Penjualan</a></li>
 									<li><a href="<?php echo base_url() ?>laporan/etc" class=""> Laporan Lainnya</a></li>
-                                    
                                 </ul>
                             </li>
                         </ul>
@@ -179,9 +177,7 @@
                 </div>
             </div>
             <div class="container nopadding">
-                
         		<div class="main">	
-
         			<?php $this->load->view($isi); ?>
         		</div>
             </div>

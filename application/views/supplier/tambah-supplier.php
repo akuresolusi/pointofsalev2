@@ -25,6 +25,7 @@
 			    <div class="form-group col-md-3">
 			    	<label>Jenis Kelamin</label> 
 			    	<select class="form-control" name="jeniskelamin" required="">
+			    		<option value="" disabled selected class="hide">- Pilih Jenis Kelamin -</option>
 				    	<?php
 			    			$data_jenis = array('Laki-Laki','Perempuan');
 			    			foreach ($data_jenis as $value) {
@@ -44,6 +45,7 @@
 			  	<div class="form-group col-md-6">
 			    	<label>Kota</label> 
 			    	<select class="form-control" name="kota"  required="">
+			    		<option value="" disabled selected class="hide">- Pilih Kota -</option>
 				    	<?php
 			    			foreach ($list_kota as $value) {
 			    				echo "<option value='".$value['id']."'>".$value['kota']."</option>";
@@ -58,6 +60,7 @@
 			  	<div class="form-group col-md-2">
 			    	<label>Bank</label> 
 			    	<select class="form-control" name="bank">
+			    		<option value="" disabled selected class="hide">- Pilih Bank -</option>
 				    	<?php
 			    			foreach ($list_bank as $value) {
 			    				echo "<option value='".$value['id']."'>".$value['bank']."</option>";

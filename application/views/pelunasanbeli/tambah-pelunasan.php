@@ -127,6 +127,7 @@ option{
 					  				<label>Rekening Bank</label>
 					  				<span id="sub-number">
 					  					<select class="form-control" name="rekbank" id="rekbank" style="width:270px;">
+					  						<option class="hide" value="">- Pilih Rekening Bank -</option>
 						  					<?php
 						  					foreach ($list_rekening as $value) {
 						  						echo"<option value='".$value['id']."'>".$value['bank']." / ".$value['nomor']." / ".$value['nama']."</option>";

@@ -18,13 +18,14 @@
 		    	<div class="panel-body">
 					<?php echo form_open('pegawai/tambah_pegawai'); ?>
 					  	<div class="form-group">
-					  	<div class="form-group col-md-4">
+					  	<div class="form-group col-md-6">
 					  		<label>Nama Lengkap</label>
 					  		<input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" required="">
 					  	</div>
-					    <div class="form-group col-md-2">
+					    <div class="form-group col-md-3">
 					    	<label>Jenis Kelamin</label> 
 					    	<select class="form-control" name="jeniskelamin" required="">
+					    		<option value="" disabled selected class="hide">- Pilih Jenis Kelamin -</option>
 						    	<?php
 					    			$data_jenis = array('Laki-Laki','Perempuan');
 					    			foreach ($data_jenis as $value) {
@@ -37,6 +38,7 @@
 					  	<div class="form-group col-md-3">
 					    	<label>Pendidikan</label> 
 					    	<select class="form-control" name="pendidikan" required="">
+					    		<option value="" disabled selected class="hide">- Pilih Pendidikan -</option>
 						    	<?php
 					    			$data_jenis = array('SD','SMP','SMA','S1');
 					    			foreach ($data_jenis as $value) {
@@ -49,9 +51,10 @@
 					  		<label>Tanggal Masuk</label>
 					  		<input type="date" name="tglmasuk" class="form-control" placeholder="Tanggal Masuk" required="">
 					  	</div>
-					    <div class="form-group col-md-4">
+					    <div class="form-group col-md-3">
 					    	<label>Jabatan</label> 
 					    	<select class="form-control" name="jabatan" required="">
+					    		<option value="" disabled selected class="hide">- Pilih Jabatan -</option>
 						    	<?php
 					    			foreach ($list_jabatan as $value) {
 					    				echo "<option value='".$value['id']."'>".$value['jabatan']."</option>";
@@ -60,11 +63,11 @@
 						    </select>
 					    </div>
 					    
-					  	<div class="form-group col-md-4">
+					  	<div class="form-group col-md-3">
 					  		<label>Telp/No Hp</label>
 					  		<input type="number" maxlength="13" name="nohp" class="form-control" placeholder="No Hp">
 					  	</div>
-					  	<div class="form-group col-md-4">
+					  	<div class="form-group col-md-3">
 					  		<label>Password</label>
 					  		<input type="password" name="password" class="form-control" placeholder="Password">
 					  	</div>
