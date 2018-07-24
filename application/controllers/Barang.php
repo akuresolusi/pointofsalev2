@@ -12,7 +12,6 @@ class Barang extends CI_Controller {
 	public function index(){
 		$data['list'] = $this->barang_model->list_barang();
 		$data['isi'] = "barang/page-barang";
-		$data['subtitle'] = "Produk";
 		$data['title'] = 'Data Barang';
 		$this->load->view('layout',$data);
 	}
@@ -22,14 +21,13 @@ class Barang extends CI_Controller {
 		$data['satuan'] = $this->master_model->detail_satuan($data['barang']['idsatuan']);
 		$data['warna'] = $this->master_model->detail_warna($data['barang']['idwarna']);
 		$data['listfoto'] = $this->barang_model->list_foto($data['barang']['id']);
-		$data['subtitle'] = "Produk";
 		$data['isi'] = "barang/view-barang";
 		$data['title'] = 'Lihat Data Barang';
 		$this->load->view('layout',$data);
 	}
 	public function import(){
 		$data['isi'] =  "barang/import-barang";
-		$data['title'] = 'Import Data Barang';
+		$data['title'] = 'Import Barang';
 		$this->load->view('layout',$data);
 	}
 	public function tambah(){
@@ -39,7 +37,6 @@ class Barang extends CI_Controller {
 		$data['list_kategorip'] = $this->master_model->list_kategori_pelanggan();
 		$data['list_kategorih'] = $this->master_model->list_kategori_harga();
 		$data['isi'] =  "barang/tambah-barang";
-		$data['subtitle'] = "Produk";
 		$data['title'] = 'Tambah Data Barang';
 		$this->load->view('layout',$data);
 	}
@@ -57,6 +54,7 @@ class Barang extends CI_Controller {
 
 		$id = $this->barang_model->add_barang();
 
+		// Proses Harga
 		$kategorip = $this->master_model->list_kategori_pelanggan();
 		$kategorih = $this->master_model->list_kategori_harga();
 		foreach ($kategorih as $value) {
@@ -68,6 +66,16 @@ class Barang extends CI_Controller {
 				}
 			}
 		}
+
+		//Proses Multi satuan
+		$satuan = $this->input->post('satuan');
+		$kali 	= $this->input->post('kali');
+		$i 		= 0;
+		foreach ($satuan as $value){
+			$this->barang_model->input_satuan($id, $satuan[$i], $kali[$i]);
+			$i++;
+		}
+			
 		redirect('barang');	
 	}
 
@@ -93,13 +101,13 @@ class Barang extends CI_Controller {
 	public function edit(){
 		$data['detail'] = $this->barang_model->detail_barang($this->input->get('id'));
 		$data['list_kategori'] = $this->master_model->list_kategori();
-		$data['list_satuan'] = $this->master_model->list_satuan();
 		$data['list_warna'] = $this->master_model->list_warna();
 		$data['list_kategorip'] = $this->master_model->list_kategori_pelanggan();
 		$data['list_kategorih'] = $this->master_model->list_kategori_harga();
+		$data['list_satuan'] = $this->master_model->list_satuan();
+		$data['list_satuan_barang'] = $this->barang_model->satuan_barang($this->input->get('id'));
 
 		$data['isi'] =  "barang/update-barang";
-		$data['subtitle'] = "Produk";
 		$data['title'] = 'Perbarui Data Barang';
 		$this->load->view('layout',$data);
 	}
@@ -125,6 +133,18 @@ class Barang extends CI_Controller {
 			}
 		}
 
+
+		//Proses Multi satuan
+		$this->barang_model->clear_satuan($id);
+
+		$satuan = $this->input->post('satuan');
+		$kali 	= $this->input->post('kali');
+		$i 		= 0;
+		foreach ($satuan as $value){
+			$this->barang_model->input_satuan($id, $satuan[$i], $kali[$i]);
+			$i++;
+		}
+
 		redirect('barang');
 	}
 
@@ -148,7 +168,6 @@ class Barang extends CI_Controller {
 		$data['list_foto'] = $this->barang_model->list_foto($this->input->get('id'));
 		$data['detail'] = $this->barang_model->detail_barang($this->input->get('id'));
 		$data['isi'] =  "barang/foto-barang";
-		$data['subtitle'] = "Produk";
 		$data['title'] = 'Upload Foto Barang';
 		$this->load->view('layout',$data);
 	}
@@ -187,11 +206,10 @@ class Barang extends CI_Controller {
 
 
 	public function cari_barang(){
-		if($this->input->is_ajax_request()){
 			
 			$barang = $this->barang_model->list_barang();
 
-			if( count($barang) >= 1){
+			if(count($barang) >= 1){
 			
 				$json["status"] = 1;
 				$json["datanya"] = "<ul id='daftar-autocomplete'>";
@@ -208,7 +226,7 @@ class Barang extends CI_Controller {
 							<span id='barang'>".$row['nama']."</span></br>
 							<span>Stok :</span>
 							<span><b>".$stok."</b></span><br>
-							<span id='hargamodal' style='display:none;'>".$row['harga1']."</span>
+							<span id='hargamodal' style='display:none;'>".$row['hargadasar']."</span>
 						</li>
 					";
 				}
@@ -225,7 +243,7 @@ class Barang extends CI_Controller {
 			
 			}
 			echo json_encode($json);
-		}
+		
 	}
 
 }

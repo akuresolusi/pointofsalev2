@@ -18,6 +18,7 @@ class Pembelian_model extends CI_Model {
 		$data = array('faktur'=>$this->input->post_get('faktur'),
 					  'idbarang'=>$this->input->post_get('idbarang'),
 					  'harga'=>$this->input->post_get('harga'),
+					  'idsatuan'=>$this->input->post_get('satuan'),
 					  'qty'=>$this->input->post_get('qty')
 				);
 		$this->db->insert('pembelian_items',$data);

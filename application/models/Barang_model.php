@@ -12,7 +12,6 @@ class Barang_model extends CI_Model {
 		$data =  array( 'kode' => $this->input->post('kode'),
 						'nama' => $this->input->post('nama'),
 						'idkategori' => $this->input->post('kategori'),
-						'idsatuan' => $this->input->post('satuan'),
 						'kontrolstok' => $this->input->post('kontrol'),
 						'hargadasar' => $this->input->post('harga'),
 						'status' => "Aktif"
@@ -24,8 +23,7 @@ class Barang_model extends CI_Model {
 	public function update_barang(){
 		$data =  array( 'nama' => $this->input->post('nama'),
 						'idkategori' => $this->input->post('kategori'),
-						'hargadasar' => $this->input->post('harga'),
-						'idsatuan' => $this->input->post('satuan')
+						'hargadasar' => $this->input->post('harga')
 					);
 		$this->db->where('id',$this->input->post_get('id'));
 		$this->db->update('barang',$data);
@@ -137,5 +135,31 @@ class Barang_model extends CI_Model {
 		$this->db->insert('harga_jual',$data);
 		return;
 	}
+
+	public function input_satuan($id, $satuan, $kali){
+		$data =  array( 'idbarang' => $id,
+						'satuan' => $satuan,
+						'kali' => $kali
+					);
+		$this->db->insert('satuan_barang',$data);
+		return;	
+	}
+
+	public function satuan_barang($idbarang){
+		$this->db->where('idbarang', $idbarang);
+		return $this->db->get('satuan_barang')->result_array();
+	}
+
+	public function detail_satuan_barang($id){
+		$this->db->where('id', $id);
+		return $this->db->get('satuan_barang')->row_array();	
+	}
+
+	public function clear_satuan($idbarang){
+		$this->db->where('idbarang', $idbarang);
+		$this->db->delete('satuan_barang');
+		return;
+	}
+
 
 }

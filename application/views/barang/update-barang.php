@@ -1,18 +1,13 @@
-<div class="container">
-	<ul class="page-breadcrumb breadcrumb">
-	    <li>
-	        <a href="<?php echo base_url(); ?>dashboard">Home</a>
-	    </li>
-	    <li>
-	        <a href="<?php echo base_url(); ?>barang">Data Barang</a>
-	    </li>
-	    <li>
-	    	<span><?php echo $title; ?></span>
-	    </li>
-	</ul>
-</div>
 <div class="main-content">
 	<div class="container-fluid">
+		<div class="panel panel-default panel-title">
+		    	<div class="panel-body title-pos">
+		    		<div class="col-md-6" style="padding: 0;">
+			    		<span id="sub-title">Produk</span>
+			    		<h3 class="page-title"><?php echo $title; ?></h3>
+		    		</div>
+		    	</div>
+		 </div>
 		<div class="panel panel-default">
 		    	<div class="panel-body">
 					<?php echo form_open_multipart('barang/proses_edit?id='.$detail['id']); ?>
@@ -39,19 +34,72 @@
 					    		?>
 						    </select>
 					    </div>
-					    <div class="form-group col-md-3">
-					    	<label>Satuan</label> 
-					    	<select class="form-control" name="satuan" required="">
-						    	<?php
-					    			foreach ($list_satuan as $value) {
-					    				if($detail['idsatuan'] == $value['id']){
-					    					echo "<option value='".$value['id']."' selected>".$value['satuan']."</option>";
-					    				}else{
-					    					echo "<option value='".$value['id']."'>".$value['satuan']."</option>";
-					    				}
-					    			}
+
+					    <div class="form-group col-md-6">
+					    	<label>Kontrol Stok ?</label>
+					    	<div class="radio">
+						    	<label><input type="radio" name="kontrol" disabled
+						    	<?php if($detail['kontrolstok']=="1"){echo"checked";} ?> required="">Ya</label> &nbsp;&nbsp;&nbsp;
+						    	<label><input type="radio" name="kontrol" disabled 
+						    	<?php if($detail['kontrolstok']=="0"){echo"checked";} ?> required="">Tidak</label>
+					    	</div>
+					    </div>
+					    
+
+					    <div class="form-group col-md-6">
+					    	<label>Multi Satuan  
+					    		<div class="btn btn-info btn-xs" style="margin-left: 120px;" id="add-form-satuan" >Tambah Satuan</div>
+					    		<div class="btn btn-warning btn-xs" style="margin-left: 10px;" id="riset-satuan" >Ulangi Satuan</div>	
+					    	</label>
+					    	<table width="100%" class="table">
+					    		<!-- Data satuan yang telah diinput -->
+					    		<?php
+					    		foreach ($list_satuan_barang as $value) {
 					    		?>
-						    </select>
+					    			<tr class="data-satuan">
+						    			<td width="40%">
+						    				<select class="form-control" name="satuan[]" required="">
+									    		<option value="">#Pilih#</option>
+										    	<?php
+									    			foreach ($list_satuan as $value2) {
+									    				if($value['satuan'] == $value2['satuan']){
+									    					echo "<option selected value='".$value2['satuan']."'>".$value2['satuan']."</option>";
+									    				}else{
+									    					echo "<option value='".$value2['satuan']."'>".$value2['satuan']."</option>";
+									    				}
+									    			}
+									    		?>
+										    </select>
+						    			</td>
+						    			<td width="40%">
+						    				<input type="number" class="form-control" name="kali[]" required="" value="<?php echo $value['kali'] ?>" placeholder="Penggalian">	
+						    			</td>
+						    		</tr>
+					    		<?php			
+					    		}
+					    		?>
+					    		<!-- End data satuan yang telah diinput -->
+					    		<tr id="form-satuan">
+					    			<td width="40%">
+					    				<select class="form-control" name="satuan[]" required="">
+								    		<option value="">#Pilih#</option>
+									    	<?php
+								    			foreach ($list_satuan as $value) {
+								    				echo "<option value='".$value['satuan']."'>".$value['satuan']."</option>";
+								    			}
+								    		?>
+									    </select>
+					    			</td>
+					    			<td width="40%">
+					    				<input type="number" class="form-control" name="kali[]" required="" placeholder="Penggalian">	
+					    			</td>
+					    		</tr>
+
+					    		<tbody id="tambah-satuan">
+					    			<!-- Dianmis Form Satuan -->
+					    		</tbody>
+
+					    	</table>
 					    </div>
 
 					   <!--  <div class="form-group col-md-3">
@@ -84,15 +132,6 @@
 						    </select>
 					    </div> -->
 
-					     <div class="form-group col-md-3">
-					    	<label>Kontrol Stok ?</label>
-					    	<div class="radio">
-						    	<label><input type="radio" name="kontrol" disabled
-						    	<?php if($detail['kontrolstok']=="1"){echo"checked";} ?> required="">Ya</label> &nbsp;&nbsp;&nbsp;
-						    	<label><input type="radio" name="kontrol" disabled 
-						    	<?php if($detail['kontrolstok']=="0"){echo"checked";} ?> required="">Tidak</label>
-					    	</div>
-					    </div>
 
 					    <div class="form-group col-md-12">
 					    	<label>Harga Dasar</label>
@@ -187,5 +226,20 @@
 		}
 
 	<?php } ?>
+
+
+	// Proses Jquery Multi form satuan
+	$("#form-satuan").hide();
+	
+	$("#add-form-satuan").click(function() {
+		$("#tambah-satuan").html("<tr>" + $("#tambah-satuan").html() + "</tr>" + "<tr>" + $("#form-satuan").html() + "</tr>");
+	});
+
+	$("#riset-satuan").click(function() {
+		$("#tambah-satuan").html("");
+		$(".data-satuan").html("");
+		$("#form-satuan").show();
+	});
+	// End Multi form Satuan
 	
 </script>

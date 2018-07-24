@@ -62,27 +62,23 @@ option{
 </style>
 
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-select.css">
+<script src="<?php echo base_url(); ?>assets/js/formatnumber.js"></script>
   
 <script src="<?php echo base_url(); ?>assets/css/select2-min.css"></script>
 <?php echo form_open('pembelian/add_faktur'); ?>
-<div class="container">
-	<ul class="page-breadcrumb breadcrumb">
-	    <li>
-	        <a href="<?php echo base_url(); ?>dashboard">Home</a>
-	    </li>	
-	    <li>
-	        <a href="<?php echo base_url(); ?>pembelian">Data Pembelian</a>
-	    </li>	
-	    <li>
-	    	<span><?php echo $title; ?></span>
-	    </li>
-	</ul>
-</div>
 <div class="main-content">
 	<div class="container-fluid">
 		<div class="panel panel-default panel-title">
+			<div class="panel-body title-pos">
+				<div class="col-md-6" style="padding: 0;">
+					<span id="sub-title">Pembelian</span>
+					<h3 class="page-title"><?php echo $title; ?></h3>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default panel-title">
 			<div class="panel-body title-pos body-blue">
-				<div class="col-md-12 nopadding">
+				<div class="col-md-12">
 					<div class="form-group col-md-3">
 				    	<label>Supplier</label> 
 				    	<input type="hidden" id="idsupplier" name="idsupplier" required="">
@@ -138,8 +134,9 @@ option{
 					  			<tr>
 					  				<th width="150px" style="padding-left: 0px;">Kode</th>
 					  				<th width="300px">Nama Barang</th>
+					  				<th width="100px">Satuan</th>
 					  				<th width="60">Qty</th>
-					  				<th width="100">Harga Satuan</th>
+					  				<th width="100">Harga</th>
 					  				<th width="100">Sub Total</th>
 					  				<th width="20"></th>
 					  			</tr>
@@ -157,12 +154,17 @@ option{
 						  				<!-- Input Barang -->
 										<input type="text" id="namabarang" class="form-control" placeholder="Nama Barang" >
 					  				</td>
+					  				<td>
+					  					<select name="satuan" id="satuan" required="" class="form-control">
+					  						<option></option>
+					  					</select>
+					  				</td>
 					  				 
 					  				<td><input type="number" id="qty" class="form-control"></td>
 					  				<td><input type="text"  id="harga" class="form-control" placeholder="Rp." style="text-align: right;"></td>
 					  				
-					  				<td style="text-align: right; font-size: 13px;" id="stotal">Rp.0</td>
-					  				<td align="right"><a id="tambah"><span class="icon-plus" title="Tambah" style="font-size: 25px; cursor: pointer;"></span></a></td>
+					  				<td style="text-align: right; font-size: 15px; font-weight: bold;" id="stotal">Rp.0</td>
+					  				<td><a id="tambah"><span class="lnr lnr-plus-circle" title="Tambah" style="font-size: 25px; cursor: pointer;"></span></a></td>
 					  			</tr>
 
 
@@ -189,21 +191,20 @@ option{
 						  			</div>
 						  			<div class="row d">
 						  				<span id="d-title">BIAYA LAINNYA</span>	
-						  				<span id="sub-number"><input type="number" id="lainnya" name="lainnya" class="form-control" style="width: 240px; margin-left:  10px; text-align: right;" placeholder="Rp"></span>
+						  				<span id="sub-number"><input type="number" id="lainnya" name="lainnya" class="form-control" style="width: 240px; margin-left:  10px; text-align: right;" placeholder="Rp."></span>
 						  			</div>
 						  			<div class="row d">
 						  				<span id="d-title">DISKON</span>	
-						  				<span id="sub-number"><input type="number" id="diskon" name="diskon" class="form-control" style="width: 240px; margin-left:  10px; text-align: right;" placeholder="Rp"></span>
+						  				<span id="sub-number"><input type="number" id="diskon" name="diskon" class="form-control" style="width: 240px; margin-left:  10px; text-align: right;" placeholder="Rp."></span>
 						  			</div>
 						  			<div class="row d">
 						  				<span id="d-title">PAJAK</span>
-						  				<span id="sub-number"><input type="text" id="hargapajak"   class="form-control" style="width: 150px; margin-left:  10px; text-align: right;" placeholder="Rp" disabled></span>		
+						  				<span id="sub-number"><input type="text" id="hargapajak"   class="form-control" style="width: 150px; margin-left:  10px; text-align: right;" placeholder="Rp." disabled></span>		
 						  				<span id="sub-number"><input type="number" min="0" max="100" class="form-control" style="width: 80px;" id="pajak" name="pajak" placeholder="%"></span>
 						  			</div>
 						  			<div class="row d">
-						  				<span id="d-title">GRAND TOTAL</span>
-						  				<span id="sub-number">			
-						  				<span id="sub-number" class="indigo">Rp <span id="grandtotal"></span></span>
+						  				<span id="gt-title">GRAND TOTAL</span>			
+						  				<span id="grand-total" class="indigo"><span id="grandtotal" ></span></span>
 						  			</div>
 						  		</div>
 					  		</div>
@@ -364,6 +365,8 @@ option{
 		$("#hargabeli").val(0);
 
 		$("#hasilpencarian").hide();
+
+		get_satuan(idbarang);
 	});
 
 	$(document).on("click", "#daftar-autocomplete-supplier li", function(){
@@ -378,6 +381,16 @@ option{
 		$("#hasilpencariansupplier").hide();
 	});
 
+	function get_satuan(idbarang){
+		$.ajax({
+			type: "get",
+			data: "idbarang=" + idbarang,
+			url: '<?php echo base_url(); ?>pembelian/get_satuan_barang',
+		    success: function(result){
+		    	$("#satuan").html(result);
+		    }
+		});   
+	}
 
 
 	$(document).ready(function(){
@@ -393,17 +406,19 @@ option{
 		var idbarang 	= $("#idbarang").val();
 		var qty 		= $("#qty").val();
 		var harga 		= $("#harga").val()
+		var satuan 		= $("#satuan").val()
 		if( 
 			( faktur == "" ) || 
 			( idbarang == "" ) || 
 			( qty == "" ) || 
+			( satuan == "" ) || 
 			( harga == "" )
 		){
-			alert('Form Penting belum terisi');
+			alert('Lengkapi Form');
 	    }else{
 	        $.ajax({
 				type: "post",
-				data: "faktur=" + faktur + "&idbarang=" + idbarang + "&qty=" + qty + "&harga=" + harga,
+				data: "faktur=" + faktur + "&idbarang=" + idbarang + "&qty=" + qty + "&harga=" + harga + "&satuan=" + satuan,
 				url: '<?php echo base_url(); ?>pembelian/add_items',
 		        success: function(result){
 		        	if(result == ""){
@@ -465,7 +480,7 @@ option{
 			url: '<?php echo base_url(); ?>pembelian/subtotal',
 	        success: function(result){
 	        	$("#total").val(result);
-	        	$("#view_subtotal").html("Rp " + result);
+	        	$("#view_subtotal").html("Rp. " + result);
 	        	hitung_form();
 	        }
         });

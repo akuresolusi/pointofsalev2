@@ -14,7 +14,6 @@ class Pembelian extends CI_Controller {
 	public function index(){
 		$data['list'] = $this->pembelian_model->list_faktur();
 		$data['isi'] = "pembelian/page-pembelian";
-		$data['subtitle'] = "Pembelian";
 		$data['title'] = 'Data Pembelian';
 		$this->load->view('layout',$data);
 	}
@@ -25,7 +24,6 @@ class Pembelian extends CI_Controller {
 		$data['syaratbayar'] = $this->master_model->detail_syaratbayar($data['detail']['idsyaratbayar']);
 		$data['items'] = $this->pembelian_model->list_items($data['detail']['faktur']);
 		$data['isi'] = "pembelian/view-pembelian";
-		$data['subtitle'] = "Pembelian";
 		$data['title'] = 'Lihat Data Pembelian';
 		$this->load->view('layout',$data);
 	}
@@ -34,7 +32,6 @@ class Pembelian extends CI_Controller {
 		$data['faktur'] = $this->pembelian_model->big_faktur()['faktur'] + 1;
 		$data['list_syarat_bayar'] = $this->master_model->list_syaratbayar();
 		$data['isi'] =  "pembelian/tambah-pembelian";
-		$data['subtitle'] = "Pembelian";
 		$data['title'] = 'Tambah Data Pembelian';
 		$this->load->view('layout',$data);	
 	}
@@ -44,14 +41,13 @@ class Pembelian extends CI_Controller {
 		$data['detail'] = $this->pembelian_model->detail_pembelian($this->input->get('faktur'));
 		$data['list_syarat_bayar'] = $this->master_model->list_syaratbayar();
 		$data['isi'] 	=  "pembelian/edit-pembelian";
-		$data['subtitle'] = "Pembelian";
 		$data['title'] 	= 'Perbarui Data Pembelian';
 
 		$pelunasan = $this->pelunasan_model->list_pelunasan_faktur($this->input->get('faktur'));
 		
 
 
-		// $this->load->view('layout',$data);	
+		$this->load->view('layout',$data);	
 	}
 
 	public function add_items(){
@@ -71,14 +67,16 @@ class Pembelian extends CI_Controller {
 		foreach ($items as $value) {
 			$totalharga = $value['qty'] * $value['harga'];
 			$barang = $this->barang_model->detail_barang($value['idbarang']);
+			$satuan = $this->barang_model->detail_satuan_barang($value['idsatuan']);
 			echo"
 			<tr>
 				<td>".$barang['kode']."</td>
 				<td>".$barang['nama']."</td>
+				<td align='center'>".$satuan['satuan']."</td>
 				<td align='center'>".$value['qty']."</td>
 				<td style='text-align: right;''>Rp.".$value['harga']."</td>
 				<td style='text-align: right;''>Rp.".$totalharga."</td>
-				<td onClick='hapus(".$value['id'].")'  style='cursor: pointer;'><a><span title='Hapus' class='icon-close' style='font-size: 20px; color: #cd2966;''></span></a></td>
+				<td onClick='hapus(".$value['id'].")'  style='cursor: pointer;'><a><span title='Hapus' class='lnr lnr-cross-circle' style='font-size: 20px; color: #cd2966;''></span></a></td>
 			</tr>";
 		}
 	}
@@ -105,10 +103,14 @@ class Pembelian extends CI_Controller {
 		if($jitems >= 1){
 			foreach ($item as $value) {
 				$barang = $this->barang_model->detail_barang($value['idbarang']);
+				$satuan = $this->barang_model->detail_satuan_barang($value['idsatuan']);
+				$qty = $value['qty'] * $satuan['kali'];
+				
 				$a = $barang['stok'] * $barang['modal'];
-				$b = $value['qty'] * $value['harga'];
-				$c = $value['qty'] + $barang['stok'];
+				$b = $qty * $value['harga'];
+				$c = $qty + $barang['stok'];
 				$d = ($a + $b) / $c;
+				
 				$this->barang_model->update_modal($value['idbarang'], $d);
 				$this->barang_model->update_stok($value['idbarang'], $c);
 			}
@@ -318,6 +320,15 @@ class Pembelian extends CI_Controller {
 
 		}
 
+	}
+
+	public function get_satuan_barang(){
+		$idbarang = $this->input->get('idbarang');
+		$data = $this->barang_model->satuan_barang($idbarang);
+		echo"<option value=''>#Pilih#</option>";
+		foreach ($data as $value){
+			echo "<option value='".$value['id']."'>".$value['satuan']."</option>";
+		}
 	}
 
 }
